@@ -10,7 +10,7 @@ class DocText extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 15.w),
       child: Text(AppText.overView,
-        style: AppStyle.w700Interbluebold25.copyWith(
+        style: AppStyle.w700Interbluebold17.copyWith(
           height: 1.5,
         ),
         textAlign: TextAlign.center,
