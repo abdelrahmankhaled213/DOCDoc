@@ -21,8 +21,11 @@ class DocImage extends StatelessWidget {
             ]
         ),
       ),
-      child: Image.asset(
-          AppImage.Doc,
+      child: Center(
+        child: Image.asset(
+            AppImage.Doc,
+          height: MediaQuery.of(context).size.height/1.5,
+        ),
       ),
     );
   }
