@@ -8,9 +8,9 @@ static  TextStyle w600black25=TextStyle(
   fontSize: 25.sp,
   color: Colors.black
 );
-static  TextStyle w700Interbluebold25=TextStyle(
+static  TextStyle w700Interbluebold17=TextStyle(
 color: AppColor.main,
-  fontSize: 25.sp,
+  fontSize: 17.sp,
   fontWeight: FontWeight.w700,
   fontFamily: 'Inter'
 );
