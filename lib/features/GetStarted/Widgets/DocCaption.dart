@@ -7,7 +7,7 @@ class DocCaptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal:15.w),
+      padding:  EdgeInsets.symmetric(horizontal:6.w),
       child: Column(
         children: [
           Text(AppText.caption,
