@@ -15,15 +15,16 @@ class DoctorBackGround extends StatelessWidget {
           alignment: Alignment.center,
           child: Image.asset
             (AppImage.Docbackground,
-            height: 300.h,
+            height: MediaQuery.of(context).size.height/2,
             color: AppColor.main.withOpacity(0.1),
             ),
         ),
         DocImage(),
         Positioned(
-            bottom: 30.h,
-            left: 0,
-            right: 0,
+bottom: 20,
+            left: 5,
+            right: 5,
+
             child: DocText()
         ),
       ],
