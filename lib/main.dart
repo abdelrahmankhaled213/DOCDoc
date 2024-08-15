@@ -21,8 +21,8 @@ class DocDoc extends StatelessWidget {
       builder: (context, child) {
        return MaterialApp.router(
          debugShowCheckedModeBanner: false,
-      
           routerConfig: gorouter,
+         
         );
       },
 
