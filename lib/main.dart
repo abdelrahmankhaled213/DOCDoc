@@ -9,7 +9,6 @@ void main(){
 }
 class DocDoc extends StatelessWidget {
 
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
