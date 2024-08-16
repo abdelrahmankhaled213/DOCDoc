@@ -5,21 +5,44 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
   final void Function() onpressed;
+  final Color? color;
   final String text;
-  const CustomButton({Key? key, required this.onpressed, required this.text});
+  final double? elevation;
+  final double? radius;
+  final double? paddingHeight;
+  final double? paddingWidth;
+  final double? height;
+  final double? width;
+  CustomButton({Key? key
+    ,this.paddingHeight
+    ,this.height
+     , this.paddingWidth
+     , required this.onpressed
+     , this.radius
+     , this.elevation
+     , required this.text
+     ,this.color,
+      this.width
+  });
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40.h,
-      width: 130.w,
+      height:height?.h?? 50.h,
+      width: width?.w??200.w,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColor.main,
-            elevation: 8.sp,
+            padding: EdgeInsets.symmetric(horizontal: paddingHeight?.h??20.w,
+                vertical: paddingWidth?.w??10.h),
+
+            backgroundColor: color??AppColor.main,
+            elevation: elevation?.sp??8.sp,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.r),
+              borderRadius: BorderRadius.circular(radius??15.r),
             )
-          ),onPressed: onpressed, child: Text(text,style: AppStyle.w400Intergrey15.copyWith(
+          ),
+          onPressed: onpressed,
+          child: Text(
+            text,style: AppStyle.w400InterGrey15.copyWith(
         color: Colors.white,
       ),
       )
