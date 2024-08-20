@@ -1,13 +1,16 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:docdoc/DocDoc.dart';
+import 'package:docdoc/core/Di/dependency%20injection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'core/routing/approuter.dart';
 
-void main(){
+void main()async{
+WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer= MyBlocObserver();
+  await setupServiceLocator();
   runApp(
 DevicePreview(
   enabled: !kReleaseMode,
@@ -15,22 +18,32 @@ DevicePreview(
 )
   );
 }
-class DocDoc extends StatelessWidget {
-  
+
+
+
+
+class MyBlocObserver extends BlocObserver {
+  @override
+  void onCreate(BlocBase bloc) {
+    super.onCreate(bloc);
+    print('onCreate -- ${bloc.runtimeType}');
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      builder: (_, child) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          title: "DocDoc",
-          routerConfig: goRouter,
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    print('onChange -- ${bloc.runtimeType}, $change');
+  }
 
-        );
-      },
-      designSize: Size(360, 690),
+  @override
+  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+    print('onError -- ${bloc.runtimeType}, $error');
+    super.onError(bloc, error, stackTrace);
+  }
 
-    );
+  @override
+  void onClose(BlocBase bloc) {
+    super.onClose(bloc);
+    print('onClose -- ${bloc.runtimeType}');
   }
 }

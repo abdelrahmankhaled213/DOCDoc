@@ -14,6 +14,7 @@ static const String and="and";
 static const String privacyPolicy="Privacy Policy";
 static const String AlreadyHaveAccount="Already have an account?";
 static const String signup="Sign Up";
+static const String ok="Ok";
 
 
 }
