@@ -1,6 +1,7 @@
 class ApiConstants{
   static const  String baseUrl = "https://vcare.integration25.com/api/";
   static const  String endPointLogin = "auth/login";
+  static const String endPointRegister = "auth/register";
 }
 class ApiErrors{
 static const String noContent = "No response from server";

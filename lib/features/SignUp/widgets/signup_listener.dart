@@ -2,23 +2,23 @@ import 'package:docdoc/core/constants/AppColor.dart';
 import 'package:docdoc/core/constants/AppStyle.dart';
 import 'package:docdoc/core/constants/AppText.dart';
 import 'package:docdoc/core/routing/approuter.dart';
-import 'package:docdoc/features/LoginScreen/logic/login_cubit.dart';
-import 'package:docdoc/features/LoginScreen/logic/login_state.dart';
+import 'package:docdoc/features/SignUp/logic/sign_up_cubit.dart';
+import 'package:docdoc/features/SignUp/logic/sign_up_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginBlocListener extends StatelessWidget {
-  const LoginBlocListener({super.key});
+class SignUpBlocListener extends StatelessWidget {
+  const SignUpBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  BlocListener<LoginCubit, LoginState>(
+    return  BlocListener<SignUpCubit, SignUpState>(
       listenWhen: (previous, current) =>
-      current is Loading ||
-          current is Success
-          || current is Error,
+      current is SignUpLoading ||
+          current is SignUpLoaded
+          || current is SignUpError,
 
       listener:  (context, state) {
         state.whenOrNull(
@@ -26,25 +26,41 @@ class LoginBlocListener extends StatelessWidget {
             showDialog(context: context, builder: (context) => const Center(
               child: CircularProgressIndicator(
                 color: AppColor.main,
-              ),),);
+              ),
+            )
+              ,
+            );
           },
 
-          failure: (error) {
+          error: (error) {
             setErrorState(context, error);
           },
-          success: (loginResponse) {
+          loaded: (SignUpResponse) {
             context.pop();
 
-            pushAndRemoveUntilScreen(context: context, path: AppRoute.home
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(AppText.account
+                  ,style: AppStyle.w500InterDarkBlue14.copyWith(
+                      color: Colors.white
+                  ),
+                )
+                ,duration: const Duration(seconds: 2),backgroundColor: AppColor.main,),
+            );
+
+
+
+            pushToScreen(context: context, path: AppRoute.login
             );
           },
         );
-    },
-    child: const SizedBox.shrink(),);
+      },
+      child: const SizedBox.shrink(),);
   }
 
   void setErrorState(BuildContext context, String error) {
-      context.pop();
+    context.pop();
     showDialog(context: context
       , builder: (context) => SizedBox(
         height: 100.h,
@@ -65,7 +81,7 @@ class LoginBlocListener extends StatelessWidget {
                 copyWith(color: Colors.red),),
                 onPressed: (){
                   context.pop();
-            })
+                })
           ],
         ),
       ),
