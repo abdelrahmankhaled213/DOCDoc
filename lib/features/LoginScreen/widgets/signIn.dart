@@ -3,12 +3,14 @@ import 'package:docdoc/core/constants/AppStyle.dart';
 import 'package:docdoc/core/constants/AppText.dart';
 import 'package:docdoc/core/helpers/app_regex.dart';
 import 'package:docdoc/core/helpers/spacing.dart';
+import 'package:docdoc/core/routing/approuter.dart';
 import 'package:docdoc/core/widgets/CustomButton.dart';
 import 'package:docdoc/features/LoginScreen/Data/model/login_request_body.dart';
 import 'package:docdoc/features/LoginScreen/logic/login_cubit.dart';
 import 'package:docdoc/features/LoginScreen/widgets/PasswordValidation.dart';
 import 'package:docdoc/features/LoginScreen/widgets/Termsandcondition.dart';
 import 'package:docdoc/features/LoginScreen/widgets/login_bloc_listner.dart';
+import 'package:docdoc/features/LoginScreen/widgets/normal_text_span.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -115,6 +117,9 @@ context.read<LoginCubit>().hasMinLength= AppRegex.hasMinLength(passwordControlle
                 text4: AppText.privacyPolicy),
 
             verticalSpace(12),
+ NormalTextSpan(text: AppText.dontHaveAnAccount, text2: AppText.signup,onTap: () {
+   pushToScreen(context: context, path: AppRoute.register);
+ },),
 
  const LoginBlocListener(),
 

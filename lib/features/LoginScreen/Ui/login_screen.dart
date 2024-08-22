@@ -22,7 +22,9 @@ class LoginScreenView extends StatelessWidget {
 
               Text(AppText.welcomeBack,style: AppStyle.w700InterBlue17.copyWith(
                 fontSize: 24.sp
-              ),),
+              ),
+
+              ),
 
               verticalSpace(10),
 
@@ -31,6 +33,7 @@ class LoginScreenView extends StatelessWidget {
               )
               ),
                         verticalSpace(20),
+
                         SignInForm(),
 
                       ],

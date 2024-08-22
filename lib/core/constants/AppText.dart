@@ -15,6 +15,16 @@ static const String privacyPolicy="Privacy Policy";
 static const String AlreadyHaveAccount="Already have an account?";
 static const String signup="Sign Up";
 static const String ok="Ok";
+static const String createAccount="Create Account";
+static const String userName="User Name";
+static const String phone="Phone";
+static const String gender="Gender";
+static const String confirmPassword="Confirm Password";
+static const String male="Male";
+static const String female="Female";
+static const String dontHaveAnAccount="Don't have an account ?";
+static const String register="Sign Up";
+static const String account="Account created Successfully";
 
 
 }
